@@ -6,15 +6,19 @@ import buildCalendar from "../Calendar/build"
 import buildDays from  "../Calendar/buildDays"
 import {globalStyle} from "../Styles/globalStyle"
 import FlatButton from "../sharedComponents/button"
+import {MaterialIcons} from "@expo/vector-icons"
+import { Foundation } from '@expo/vector-icons';
+
+
 
 
 export default function Calendar({navigation}) {
+    
+   
     const [weekDays,setWeekDays] = useState([])
     const [calendar,setCalendar] = useState([])
     const [value, setValue] = useState(moment())
-    const goToGraphs = () => {
-        navigation.navigate("Graphs");
-    }
+    
     const monthIncrease = () => {
         setValue(value.clone().add(1, "month"));
     }
@@ -44,11 +48,16 @@ export default function Calendar({navigation}) {
 
    
     return(   
-   <ImageBackground source = {require("../Images/turkuaz.jpg")} style= {globalStyle.container}>     
+   <ImageBackground source = {require("../Images/16.jpeg")} style= {globalStyle.container}>     
    
         <View style={styles.header}>
+            
             <View style = {styles.button}>
-                    <FlatButton text = "prev" onPress = {monthDecrease}/>
+                    {/* <FlatButton text = "prev" onPress = {monthDecrease}/> */}
+                    
+                    <MaterialIcons name= "chevron-left" onPress = {monthDecrease} size = {48} />
+                   
+                    
 
             </View>
             <View style = {styles.headerTextContainer}>
@@ -57,11 +66,20 @@ export default function Calendar({navigation}) {
 
             </View>
             <View style = {styles.button}>
-            <FlatButton text = "next"  onPress = {monthIncrease}/>
+                  {/* <FlatButton text = "next"  onPress = {monthIncrease}/> */}
 
+                  <MaterialIcons name= "chevron-right" onPress = {monthIncrease} size = {48} />
             </View>
         </View>
+        {/* <View style = {styles.button}>
+                   
+                    
+                         <Foundation name= "graph-bar" onPress = {goToGraphs} size = {48} color = "black"/>
+                   
+
+        </View>  */}
         <View style = {styles.daysOfWeek} >
+       
             {weekDays.map((week) => (
                 
                 <View style={ styles.weekDaysContainer}>
@@ -76,14 +94,17 @@ export default function Calendar({navigation}) {
         </View>
        
         
-
+      
+                               
         <View style= {styles.table}>
             {calendar.map((week) => (
                 
                 <View style={styles.week}>
                 {week.map((day) => (
+                
                 <TouchableOpacity
                 onPress={()=>{setValue(day)}}
+            
                 style={[styles.days, isSelected(day) ? styles.selected : styles.not_selected]}>
                 <Text style={styles.text}>{day.format("D").toString()}</Text>
                 </TouchableOpacity>
@@ -92,10 +113,7 @@ export default function Calendar({navigation}) {
             ))}
         </View>
     
-        <View style = {styles.graphButton}>
-                <FlatButton  text = "Workload Graphs" onPress = {goToGraphs}/>
-
-        </View>
+       
     
     </ImageBackground>
     )
@@ -105,7 +123,7 @@ export default function Calendar({navigation}) {
 
 const styles = StyleSheet.create({
     header: {
-        marginTop: 30,
+        marginTop: 10,
         height: 80,
         flexDirection: "row",
         alignItems: "center",
@@ -149,22 +167,23 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     week: {
-        borderTopWidth: 1,
-        paddingTop: 10,
-        marginVertical: 5,
+        
+        paddingTop: 5,
+        
         flexDirection: "row",
         justifyContent: "space-evenly",
         
     },
     weekDaysContainer:{
+    
         flexDirection: "row",
         justifyContent: "space-evenly",
     },
     not_selected: {
-        backgroundColor: `#ffdab9`,
+        backgroundColor: `#E6E6E6`,
     },
     selected: {
-        backgroundColor: `#00ffff`,
+        backgroundColor: `#1ED9E2`,
     },
     text: {
         fontSize: 20,
@@ -174,19 +193,19 @@ const styles = StyleSheet.create({
     
     days: {
         
-        borderWidth: 1,
+        borderWidth: 0.8,
         borderRadius: 10,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
         width: Dimensions.get("window").width / 7.5,
-        height: 55,
-        margin: 1,
+        height: 70,
+       
         marginHorizontal: 4,
         
     },
     weekDays: {
         
-        
+     
         justifyContent: "center",
         alignItems: "center",
         width: Dimensions.get("window").width / 7.5,
@@ -207,6 +226,7 @@ const styles = StyleSheet.create({
     
     button:{
         textAlign: "center",
+       
         
         padding: 10,
         justifyContent: "center",
@@ -216,5 +236,6 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
      
-    }
+    },
+   
 })

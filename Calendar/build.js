@@ -4,10 +4,17 @@ export default function buildCalendar(value) {
     const day = startDay.clone().subtract(1, "day")
 
     const calendar  = []
+    let rowCount = 0;
     while(day.isBefore(endDay,"day")) {
+        rowCount++;
         calendar .push(
             Array(7).fill(0).map( () => day.add(1,"day").clone())
-        )
+        );
+    }
+    if(rowCount != 6){
+        calendar .push(
+            Array(7).fill(0).map( () => day.add(1,"day").clone())
+        );
     }
 
     return calendar
