@@ -8,18 +8,24 @@ export default function Graphs(){
     return(
         <ImageBackground source = {require("../Images/c.jpg")} style= {globalStyle.container}>
                 <View style = {styles.container}>
-                    <TouchableOpacity style = {styles.touchable}>
-                        <Image 
-                            style = {styles.image}
-                            source = {require("../Images/graphimageweek.png")}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity style = {styles.touchable}>
-                        <Image 
-                            style = {styles.image}
-                            source = {require("../Images/graphimagemonth.png")}
-                        />
-                    </TouchableOpacity>
+                    <View style = {styles.button}>
+                        <Text style = {{fontSize: 18,color: "black"}}> WEEKLY WORKLOAD </Text>
+                        <TouchableOpacity style = {styles.touchable}>
+                            <Image 
+                                style = {styles.image}
+                                source = {require("../Images/bargraphicon3.png")}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style = {styles.button}>
+                        <Text style = {{fontSize: 18,color: "black"}}> MONTHLY WORKLOAD </Text>
+                        <TouchableOpacity style = {styles.touchable}>
+                            <Image 
+                                style = {styles.image}
+                                source = {require("../Images/bargraphmonthly.png")}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
         </ImageBackground>
     )
@@ -30,15 +36,26 @@ const styles = StyleSheet.create({
         flexDirection : "column",
         alignItems: "center",
         justifyContent: "center",
+        
     },
     touchable:{
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
+       
         margin: 20,
         
     },
+    button:{
+        padding: 10,
+        borderWidth: 1,
+        borderRadius: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 20,
+        backgroundColor: "#1ED3A4",
+    },
     image:{
+        resizeMode:'contain',
         height: 150,
         width: 150,
     },
+  
 });
