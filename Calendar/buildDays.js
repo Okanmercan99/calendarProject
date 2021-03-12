@@ -1,3 +1,4 @@
+
 export default function buildDays(value) {
     const startDay = value.clone().startOf("month").startOf("isoWeek")
     const endDay = value.clone().startOf("month").endOf("isoWeek")
@@ -11,4 +12,5 @@ export default function buildDays(value) {
     }
 
     return calendar
+
 }

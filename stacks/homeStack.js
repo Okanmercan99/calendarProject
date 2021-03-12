@@ -1,3 +1,4 @@
+
 import {createStackNavigator} from "react-navigation-stack";
 import {createAppContainer} from "react-navigation";
 import Calendar from "../scenes/Calendar";
@@ -30,4 +31,5 @@ const HomeStack = createStackNavigator(screens,{
         headerTitleStyle: {alignSelf:"center"}
     }
 });
+
 export default HomeStack;

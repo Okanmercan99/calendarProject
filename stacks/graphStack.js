@@ -1,3 +1,4 @@
+
 import {createStackNavigator} from "react-navigation-stack";
 
 import Calendar from "../scenes/Calendar";
@@ -30,4 +31,5 @@ const GraphStack = createStackNavigator(screens, {defaultNavigationOptions:{
     
 }}
 );
+
 export default GraphStack;

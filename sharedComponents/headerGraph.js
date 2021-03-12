@@ -1,3 +1,4 @@
+
 import React from "react";
 import {Dimensions, StyleSheet, Text, View, } from "react-native";
 import {MaterialIcons} from "@expo/vector-icons";
@@ -50,4 +51,5 @@ const styles = StyleSheet.create(
         
         
     }
+
 )
