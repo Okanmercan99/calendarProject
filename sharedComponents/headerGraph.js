@@ -3,6 +3,7 @@ import React from "react";
 import {Dimensions, StyleSheet, Text, View, } from "react-native";
 import {MaterialIcons} from "@expo/vector-icons";
 import { Foundation } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function Header({navigation, title}){
 
@@ -14,6 +15,7 @@ export default function Header({navigation, title}){
         <View style = {styles.header}>
             
             <Foundation name= "graph-bar" onPress = {goToGraphs} size = {36} color = "#ddd" style = {styles.icon}/>
+            <Ionicons name="add" size={48} color="#ddd" style = {styles.add} />
             <View>
                 
                 <Text style = {styles.headerText}>{title}</Text>
@@ -48,6 +50,10 @@ const styles = StyleSheet.create(
             position: "absolute",
             left: 16,
         },
+        add:{
+            position: "absolute",
+            right: 16,
+        }
         
         
     }
