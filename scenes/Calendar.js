@@ -14,7 +14,9 @@ import { Foundation } from '@expo/vector-icons';
 
 export default function Calendar({navigation}) {
     
-   
+    function insideMonth(day) {if((moment(day).isAfter(value.clone().startOf("month").subtract(1,"day")) && moment(day).isBefore(value.clone().endOf("month")))){
+        return true;
+    }}
     const [weekDays,setWeekDays] = useState([])
     const [calendar,setCalendar] = useState([])
     const [value, setValue] = useState(moment())
@@ -94,7 +96,7 @@ export default function Calendar({navigation}) {
         </View>
        
         
-      
+        {/* (moment(day).isAfter(value.clone().startOf("month").subtract(1,"day")) && moment(day).isBefore(value.clone().endOf("month")) )? styles.not_selected: styles.transparent  */}
                                
         <View style= {styles.table}>
             {calendar.map((week) => (
@@ -105,7 +107,7 @@ export default function Calendar({navigation}) {
                 <TouchableOpacity
                 onPress={()=>{setValue(day)}}
             
-                style={[styles.days, isSelected(day) ? styles.selected : styles.not_selected]}>
+                style={[styles.days,insideMonth(day) ? ( isSelected(day) ? styles.selected: styles.not_selected ) : styles.transparent]}>
                 <Text style={styles.text}>{day.format("D").toString()}</Text>
                 </TouchableOpacity>
                 ))}
@@ -130,6 +132,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginBottom: 5,
        
+    },
+    transparent:{
+        backgroundColor: "transparent",
     },
     headerTextContainer:{
        flexDirection: "row",
@@ -180,7 +185,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
     },
     not_selected: {
-        backgroundColor: `#E6E6E6`,
+    
+       backgroundColor:"#E6E6E6",
     },
     selected: {
         backgroundColor: `#1ED9E2`,
@@ -199,7 +205,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         width: Dimensions.get("window").width / 7.5,
         height: 70,
-       
+        
         marginHorizontal: 4,
         
     },
